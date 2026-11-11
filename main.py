@@ -1,7 +1,7 @@
 #import the def that creates the graph
 from graph import create_graph, add_edge, add_directed_edge, to_undirected
 from loader import loader_graph
-from checking import get_reachable, is_connected
+from checking import get_reachable, is_connected, count_components, has_cycles
 graph_1 = loader_graph("data/ejemplo_1.csv")
 graph_2 = loader_graph("data/ejemplo_2.csv")
 
@@ -19,10 +19,20 @@ is_connected(graph_2)
 is_connected(graph_1)
 is_connected(loader_graph("data/ejemplo_1.csv", directed=True))
 is_connected(loader_graph("data/ejemplo_2.csv", directed=True))
+has_cycles(loader_graph("data/ejemplo_1.csv"))
+has_cycles(loader_graph("data/ejemplo_2.csv"))
+has_cycles(loader_graph("data/ejemplo_3.csv"))
+has_cycles(loader_graph("data/ejemplo_4.csv"))
+has_cycles(loader_graph("data/ejemplo_5.csv"))
 #prints the graphs in terminal
 print(graph)
 print(directed_graph)
 print(loader_graph("data/ejemplo_1.csv", directed = True))
 print(get_reachable(graph_2, 1))
 print(to_undirected(loader_graph("data/ejemplo_1.csv", directed=True)))
+print(count_components(loader_graph("data/ejemplo_1.csv")))
+print(count_components(loader_graph("data/ejemplo_2.csv")))
+print(count_components(loader_graph("data/ejemplo_3.csv")))
+print(count_components(loader_graph("data/ejemplo_4.csv")))
+print(count_components(loader_graph("data/ejemplo_5.csv")))
 

@@ -14,6 +14,15 @@ def get_reachable(graph, start):
                 stack.append(neighbor)
     return visited
 
+def count_components(graph):
+    """Return the number of connected components of an undirected graph"""
+    visited = set()
+    components = 0
+    for vertex in graph:
+        if vertex not in visited:
+            visited |= get_reachable(graph, vertex)
+            components += 1
+    return components
 
 def is_connected(graph, directed=False):
     """Return True if the graph is connected."""
@@ -28,7 +37,15 @@ def is_connected(graph, directed=False):
 
 def has_cycles(graph, directed=False):
     """Return True if the graph has at least one cycle."""
-    pass  # Owner: sebastian
+    vertex_count = len(graph)
+    edge_count = 0
+    for neighbors in graph.values():
+        edge_count += len(neighbors)
+    edge_count = edge_count // 2
+    components = count_components(graph)
+    result = edge_count > vertex_count - components
+    print(f"has_cycles: {result}")
+    return result
 
 
 def is_tree(graph, directed=False):
