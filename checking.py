@@ -1,3 +1,4 @@
+from graph import to_undirected
 
 def get_reachable(graph, start):
     """Return the set of vertices reachable from start (iterative DFS)"""
@@ -16,6 +17,8 @@ def get_reachable(graph, start):
 
 def is_connected(graph, directed=False):
     """Return True if the graph is connected."""
+    if directed:
+        graph = to_undirected(graph)
     start = list(graph)[0]
     reachable = get_reachable(graph, start)
     result = len(reachable) == len(graph)

@@ -19,3 +19,13 @@ def add_directed_edge(graph, source, target, weight):
     if target not in graph:
         graph[target] = {}
     graph[source][target] = weight
+
+def to_undirected(graph):
+    """Return an undirected copy of graph, ignoring edge directions."""
+    undirected = create_graph()
+    for source in graph:
+        if source not in undirected:
+            undirected[source] = {}
+        for target, weight in graph[source].items():
+            add_edge(undirected, source, target, weight)
+    return undirected
