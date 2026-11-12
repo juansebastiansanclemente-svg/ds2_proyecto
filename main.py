@@ -72,8 +72,14 @@ for number in range(1, 7):
     print(f"ejemplo_{number} undirected:")
     is_connected(undirected)
     has_cycles(undirected)
+    is_tree(undirected)
+    is_forest(undirected)
 
     print(f"ejemplo_{number} directed:")
     is_connected(directed, directed = True)
     has_cycles(directed, directed = True)
+    is_tree(directed, directed = True)
+    is_forest(directed, directed = True)
+
+
 
