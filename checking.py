@@ -1,3 +1,5 @@
+from unittest import result
+
 from graph import to_undirected
 
 def get_reachable(graph, start):
@@ -35,8 +37,37 @@ def is_connected(graph, directed=False):
     return result
 
 
+def visited_directed(graph, vertex, visited, on_path):
+        """Explore from vertex following arrows; return True if a cycle is found"""
+        on_path.add(vertex)
+        for neighbor in graph[vertex]:
+            if neighbor in on_path:
+                return True
+            if neighbor not in visited:
+                if visited_directed(graph, neighbor, visited, on_path):
+                    return True
+        on_path.remove(vertex)
+        visited.add(vertex)
+        return False
+
+def has_directed_cycle(graph):
+    """Return true if the directed graph has at least one cycle"""
+    visited = set()
+    on_path = set()
+    for start in graph:
+        if start not in visited:
+            if visited_directed(graph, start, visited, on_path):
+                return True
+    return False
+
+
 def has_cycles(graph, directed=False):
     """Return True if the graph has at least one cycle."""
+    if directed:
+        result = has_directed_cycle(graph)
+        print(f"has_cycles: {result}")
+        return result
+
     vertex_count = len(graph)
     edge_count = 0
     for neighbors in graph.values():
