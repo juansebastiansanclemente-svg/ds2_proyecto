@@ -50,9 +50,16 @@ def has_cycles(graph, directed=False):
 
 def is_tree(graph, directed=False):
     """Return True if the graph is a tree."""
-    pass  # Owner: eduardo
+    connected = is_connected(graph, directed)
+    cycles = has_cycles(graph, directed)
+    result = connected and not cycles
+    print(f"is_tree: {result}")
+    return result
 
 
 def is_forest(graph, directed=False):
     """Return True if the graph is a forest."""
-    pass  # Owner: eduardo
+    cycles = has_cycles(graph, directed)
+    result = not cycles
+    print(f"is_forest: {result}")
+    return result
