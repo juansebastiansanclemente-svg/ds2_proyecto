@@ -1,9 +1,9 @@
 #import the def that creates the graph
-from pickletools import unicodestring1
+
 
 from graph import create_graph, add_edge, add_directed_edge, to_undirected
 from loader import loader_graph
-from checking import get_reachable, is_connected, count_components, has_cycles
+from checking import get_reachable, is_connected, count_components, has_cycles, is_forest, is_tree
 
 #This are all the testings i used in main to see if the def works correctly
 
@@ -29,12 +29,26 @@ has_cycles(loader_graph("data/ejemplo_2.csv"))
 has_cycles(loader_graph("data/ejemplo_3.csv"))
 has_cycles(loader_graph("data/ejemplo_4.csv"))
 has_cycles(loader_graph("data/ejemplo_5.csv"))
+
 has_cycles(loader_graph("data/ejemplo_1.csv", directed=True))
 has_cycles(loader_graph("data/ejemplo_2.csv", directed=True))
 has_cycles(loader_graph("data/ejemplo_3.csv", directed=True))
 has_cycles(loader_graph("data/ejemplo_4.csv", directed=True))
 has_cycles(loader_graph("data/ejemplo_5.csv", directed=True))
 has_cycles(loader_graph("data/ejemplo_6.csv", directed=True))
+
+is_tree(loader_graph("data/ejemplo_1.csv"))
+is_tree(loader_graph("data/ejemplo_2.csv"))
+is_tree(loader_graph("data/ejemplo_3.csv"))
+is_tree(loader_graph("data/ejemplo_4.csv"))
+is_tree(loader_graph("data/ejemplo_5.csv"))
+
+is_forest(loader_graph("data/ejemplo_1.csv"))
+is_forest(loader_graph("data/ejemplo_2.csv"))
+is_forest(loader_graph("data/ejemplo_3.csv"))
+is_forest(loader_graph("data/ejemplo_4.csv"))
+is_forest(loader_graph("data/ejemplo_5.csv"))
+
 #prints the graphs in terminal
 print(graph)
 print(directed_graph)
