@@ -1,1 +1,53 @@
-# PROYECTO DISCRETAS II: GRAFOSS
+# PROYECTO DISCRETAS II: GRAFOS
+
+Entrega del proyecto. Implementado en Python con UV, sin librerias de grafos.
+
+## Estructura
+
+La estructura de folders y archivos que implementamos busca ser lo mas organizada posible y delimitar bien las funciones, pensamos que lo mejor era delimitar bien que
+se necesitaba para poder realizar el trabajo, las categorias fueron graph.py, loader.py, checking.py, dentro de esos files pusimos las funciones que usariamos segun su
+categoria, estas funciones posteriormente las importamos dentro del main. De esta manera hicimos todo lo posible para que se viese "clean" serua facil hacer todo en el
+main ya que python lo permite, pero esta forma de trabajar fue fruto de la experiencia que tuve jugando un juego llamado "The farmer was replaced" ahi aprendi que es
+mas facil y desde mi opinion mejor para trabajar.
+
+Ahora procedemos a mostrar los files y folders importantes, que funciones contienen y que hacen:
+
+- graph.py: representacion del grafo (create_graph, add_edge, add_directed_edge, to_undirected).
+- loader.py: lee un archivo CSV source,target,weight y construye el grafo (loader_graph).
+- checking.py: is_connected, has_cycles, is_tree, is_forest y funciones auxiliares.
+- main.py: ejecuta las pruebas con los 6 ejemplos de la carpeta data/.
+- data/: archivos de ejemplo ejemplo_N.csv.
+
+## Representacion elegida
+Usamos una **lista de adyacencia** implementada como diccionario de diccionarios: {vertice: {vecino: peso}}.
+Nota: Me sigue resultando muy dificil ver los grafos de esta manera, honestamente verlos graficamente durante clase es un privilegio.
+
+
+Razones:
+- Recorrer los vecinos de un vertice es directo, lo que facilita DFS y los recorridos.
+- Ocupa memoria proporcional a las aristas que existen, no a todos los pares de vertices como una matriz.
+- El peso de una arista se consulta facil: graph[u][v].
+- Sirve igual para grafos dirigidos y no dirigidos: solo cambia si la arista se guarda en un sentido (dirigido) o en ambos (no dirigido).
+
+## Decisiones de diseño
+- Las funciones reciben directed=False; con directed=True tratan el grafo como dirigido.
+- **Conexo** en dirigidos: usamos conexión debil (se ignoran las flechas).
+- **Ciclos** en no dirigidos: hay ciclo si hay más aristas que vertices - componentes. En dirigidos: DFS que marca el camino actual.
+- **Arbol** = conexo y sin ciclos. **Bosque** = sin ciclos. En dirigidos se revisa el grafo sin flechas.
+
+## Como ejecutar
+uv run main.py
+
+## Limitaciones
+- Un vertice solo existe si aparece en alguna arista del CSV.
+- Si hay aristas repetidas entre el mismo par de vertices, la ultima reemplaza a la anterior.
+- Casos limite como el grafo vacio o los lazos (arista de un vertice a si mismo) no se probaron a fondo.
+
+## Como nos fue
+
+**Reparto del trabajo:** en una reunión por Google Meet adelantamos las primeras etapas del proyecto. Después nos dividimos los puntos 6 al 9: Sebastián hizo `is_connected` y `has_cycles` (puntos 6 y 7) y Eduardo hizo `is_tree` e `is_forest` (puntos 8 y 9). También tuvimos un conflicto de Git en `main.py` y lo resolvimos conservando los cambios de los dos.
+Sebastian: Lo mas dificil para mi fue la parte de los ciclos (has_cycles), sobre tidi en los grafos dirigidos donde hubo que seguir las flechas y marcar el camino actual. Cuando probe con el example_6 dirigido vi que is_tree e is_forest no podia mirar el ciclo dirigido entonces me toco corregirlo.
+En este trabajo aprendi; Como usar diccionarios para represntar grafos de manera no graficos ni dibujandolos, ademas a usar pytohn de mejor manera, con herramientas y formas de organizar el codigo que casi no use en primer semestre que fue cuando vi python.
+
+
+Eduardo:
