@@ -20,7 +20,7 @@ Ahora procedemos a mostrar los files y folders importantes, que funciones contie
 
 ## Representacion elegida
 Usamos una **lista de adyacencia** implementada como diccionario de diccionarios: {vertice: {vecino: peso}}.
-Nota: Me sigue resultando muy dificil ver los grafos de esta manera, honestamente verlos graficamente durante clase es un privilegio.
+Nota: Nos sigue resultando muy dificil ver los grafos de esta manera, honestamente verlos graficamente durante clase es un privilegio.
 
 
 Razones:
@@ -33,7 +33,7 @@ Razones:
 - Las funciones reciben directed=False; con directed=True tratan el grafo como dirigido.
 - **Conexo** en dirigidos: usamos conexión debil (se ignoran las flechas).
 - **Ciclos** en no dirigidos: hay ciclo si hay más aristas que vertices - componentes. En dirigidos: DFS que marca el camino actual.
-- **Arbol** = conexo y sin ciclos. **Bosque** = sin ciclos. En dirigidos se revisa el grafo sin flechas.
+- **Arbol** = conexo y sin ciclos. **Bosque** = sin ciclos.
 
 ## Como ejecutar
 uv run main.py
@@ -46,8 +46,6 @@ uv run main.py
 ## Como nos fue
 
 **Reparto del trabajo:** en una reunión por Google Meet adelantamos las primeras etapas del proyecto. Después nos dividimos los puntos 6 al 9: Sebastián hizo `is_connected` y `has_cycles` (puntos 6 y 7) y Eduardo hizo `is_tree` e `is_forest` (puntos 8 y 9). También tuvimos un conflicto de Git en `main.py` y lo resolvimos conservando los cambios de los dos.
-Sebastian: Lo mas dificil para mi fue la parte de los ciclos (has_cycles), sobre tidi en los grafos dirigidos donde hubo que seguir las flechas y marcar el camino actual. Cuando probe con el example_6 dirigido vi que is_tree e is_forest no podia mirar el ciclo dirigido entonces me toco corregirlo.
-En este trabajo aprendi; Como usar diccionarios para represntar grafos de manera no graficos ni dibujandolos, ademas a usar pytohn de mejor manera, con herramientas y formas de organizar el codigo que casi no use en primer semestre que fue cuando vi python.
-
-
-Eduardo:
+Sebastian: Lo mas dificil para mi fue la parte de los ciclos (has_cycles), sobre todo en los grafos dirigidos donde hubo que seguir las flechas y marcar el camino actual. Cuando probe con el example_6 dirigido vi que is_tree e is_forest no podia mirar el ciclo dirigido entonces me toco corregirlo.
+En este trabajo aprendmos a como usar diccionarios para represntar grafos de manera no graficos ni dibujandolos, ademas a usar pytohn de mejor manera, con herramientas y formas de organizar el código que casi no use en primer semestre que fue cuando vi python.
+Eduardo: Recordar como escribir para Python fue un poco retador para este proyecto, con la ayuda de mi compañero y revisando e investigando creo que logramos hacer el trabajo de buena manera. A su vez volver a tener un proyecto de parejas sirvió para volver a tener mayor responsabilidad dentro del mismo. Por parte del proyecto, fue algo complicado reafirmar los conocimientos en cuanto a las necesidades de un arbol y de un bosque
